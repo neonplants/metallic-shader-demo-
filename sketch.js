@@ -37,7 +37,10 @@ function setup() {
   setAttributes('antialias', true);
   setAttributes('alpha', true);
 
-  createCanvas(1280, 720, WEBGL);
+  // Responsive canvas - fills container, maintains 16:9 aspect ratio
+  let w = windowWidth;
+  let h = windowHeight;
+  createCanvas(w, h, WEBGL);
   // 2x pixel density for smooth sub-pixel rendering
   pixelDensity(2);
   frameRate(30);
@@ -414,6 +417,10 @@ function createSquareLogo() {
 }
 
 // ============ CONTROLS ============
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 
 function keyPressed() {
   if (key === ' ') playing = !playing;
